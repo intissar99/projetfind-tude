@@ -9,10 +9,19 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import AddProduct from "./AddProduct"
+import { Style } from "@material-ui/icons";
 
 const settings = ["Profile", "Logout"];
 
+const style = {
+  
+  left: '150%',
+ 
+};
+
 function Navbar() {
+
   const navigate = useNavigate();
   const { admin, user, dispatch } = useContext(Context);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -50,7 +59,11 @@ function Navbar() {
 
 
 
-      {admin ? null : <ul>
+      {admin ? 
+      <AddProduct sx={style}/>
+        : 
+        
+        <ul>
         <li>
           <Link to={"/Contactus"}>Contact us </Link>
         </li>

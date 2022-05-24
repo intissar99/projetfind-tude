@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+
 mongoose.Promise= global.Promise
 
 const productSchema= new mongoose.Schema(
@@ -7,7 +8,7 @@ const productSchema= new mongoose.Schema(
        price:String,
        categorie:String,
        picture:String,
-       user:{type:Schema.Types.ObjectId,ref:"User"}
+       //user:{type:Schema.Types.ObjectId,ref:"User"}
 
     },
     { 
