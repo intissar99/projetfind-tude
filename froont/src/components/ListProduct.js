@@ -10,11 +10,13 @@ import {
   makeStyles,
   Button,
 } from "@material-ui/core";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 const useStyle = makeStyles({
   table: {
-    width: "60%",
-    margin: "100px 0 0 250px",
+    width: "100%",
+    margin: "100px 0 0 0",
    position:"flex ",
    top:0
     
@@ -49,9 +51,17 @@ function ListProduct() {
 
   console.log(Products);
   return (
-    <>
     
-    <Sidebar/>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+        <Sidebar/>
+        </Grid>
+    
+    
+    
+    <Grid item xs={8}>
+
     <Table className={classes.table}>
       <TableHead>
         <TableRow  className={classes.thead}>
@@ -66,7 +76,7 @@ function ListProduct() {
       </TableHead>
       <TableBody>
         {
-          Users.map((product) =>(
+          Products.map((product) =>(
             <TableRow className={classes.row}>
              
               <TableCell>{product.name}</TableCell>
@@ -83,7 +93,10 @@ function ListProduct() {
        
       </TableBody>
     </Table>
-    </>
+    </Grid>
+    </Grid>
+    </Box>
+    
   )
   
 }

@@ -8,6 +8,8 @@ import Profile from "./components/Profile"
 import Navbar from "./components/Navbar"
 import Dashboard from "./components/Dashboard"
 import ListUsers from "./components/ListUsers"
+import ListProducts from "./components/ListProduct"
+import Products from "./components/Products"
 import { ContextProvider, Context } from "./context/Context"
 import { React } from "react";
 
@@ -34,6 +36,10 @@ function App() {
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/ListUsers" element={<ListUsers/>} />
+          <Route path="/ListProduct" element={<ListProducts/>} />
+          <Route path="/Products" element={<Products/>} />
+
+
           
         </Routes>
 

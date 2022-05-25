@@ -61,20 +61,19 @@ export default function AddProduct() {
   const handleChangeCategorie = (event) => {
     setCategorie(event.target.value);
   };
-  function createProduct(event) {
-    
-    axios.post("http://localhost:3000/createProduct", {
+  const createProduct=async (event)=> {
+    event.preventDefault()
+    try {
+      axios.post("http://localhost:3000/createProduct", {
         name: name,
         price: price,
         categorie: categorie,
         
       })
-      .then(() => {
-        alert("product bug");
-      })
-      .catch(() => {
+      alert("product bug");
+    }catch(error){
         alert("try again");
-      });
+      }
   }
 
   return (
