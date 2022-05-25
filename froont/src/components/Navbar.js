@@ -15,9 +15,9 @@ import { Style } from "@material-ui/icons";
 const settings = ["Profile", "Logout"];
 
 const style = {
-  
+
   left: '150%',
- 
+
 };
 
 function Navbar() {
@@ -59,25 +59,25 @@ function Navbar() {
 
 
 
-      {admin ? 
-      <AddProduct sx={style}/>
-        : 
-        
+      {admin ?
+        <AddProduct sx={style} />
+        :
+
         <ul>
-        <li>
-          <Link to={"/Contactus"}>Contact us </Link>
-        </li>
-        <li>
-          <a>
-            <Link to={"/Services"}>Services </Link>
-          </a>
-        </li>
-        <li>
-          <a>
-            <Link to={"/Products"}>Products </Link>
-          </a>
-        </li>
-      </ul>}
+          <li>
+            <Link to={"/Contactus"}>Contact us </Link>
+          </li>
+          <li>
+            <a>
+              <Link to={"/Services"}>Services </Link>
+            </a>
+          </li>
+          <li>
+            <a>
+              <Link to={"/Products"}>Products </Link>
+            </a>
+          </li>
+        </ul>}
 
       <ul>
         {user || admin ? (

@@ -15,9 +15,9 @@ const useStyle = makeStyles({
   table: {
     width: "60%",
     margin: "100px 0 0 250px",
-   position:"flex ",
-   top:0
-    
+    position: "flex ",
+    top: 0
+
   },
   thead: {
     "& > *": {
@@ -50,41 +50,41 @@ function ListProduct() {
   console.log(Products);
   return (
     <>
-    
-    <Sidebar/>
-    <Table className={classes.table}>
-      <TableHead>
-        <TableRow  className={classes.thead}>
-          
-          
-          <TableCell> name</TableCell>
-          <TableCell>price</TableCell>
-          <TableCell>categorie</TableCell>
-          
-          <TableCell>Action</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {
-          Users.map((product) =>(
-            <TableRow className={classes.row}>
-             
-              <TableCell>{product.name}</TableCell>
-              <TableCell>{product.price}</TableCell>
-              <TableCell>{product.categorie}</TableCell>
-             
-             <TableCell>
-              <Button variant="contained" color="primary" style={{marginRight: 10}}  ></Button> 
-              <Button variant="contained" color="secondary"  >delete</Button> 
-             </TableCell>
-            </TableRow>
-          ))
-        }
-       
-      </TableBody>
-    </Table>
+
+      <Sidebar />
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow className={classes.thead}>
+
+
+            <TableCell> name</TableCell>
+            <TableCell>price</TableCell>
+            <TableCell>categorie</TableCell>
+
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {
+            Products.map((product) => (
+              <TableRow className={classes.row}>
+
+                <TableCell>{product.name}</TableCell>
+                <TableCell>{product.price}</TableCell>
+                <TableCell>{product.categorie}</TableCell>
+
+                <TableCell>
+                  <Button variant="contained" color="primary" style={{ marginRight: 10 }}  ></Button>
+                  <Button variant="contained" color="secondary"  >delete</Button>
+                </TableCell>
+              </TableRow>
+            ))
+          }
+
+        </TableBody>
+      </Table>
     </>
   )
-  
+
 }
 export default ListProduct;
