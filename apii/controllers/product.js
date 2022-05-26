@@ -38,3 +38,21 @@ exports.fetchProducts=async function(req,res){
     }
 
 }
+//delete product 
+exports.deleteProducts=async function(req,res){
+    console.log(req.params.id)
+    try{
+      
+        const product= await product.findByIdAndDelete(req.params.id)
+        
+       
+
+      
+     res.send(200,product)
+    }
+    catch(error){
+        console.log(error)
+        res.status(500).send(error)
+
+    }
+}

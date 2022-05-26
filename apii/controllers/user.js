@@ -60,7 +60,19 @@ exports.fetchUsers=async function(req,res){
 }
 //delete user 
 exports.deleteUsers=async function(req,res){
-    const id= req.params.id;
-    await db.findByIdAndRemove(id).exec();
-    res.send("item deleted");
+    console.log(req.params.id)
+    try{
+      
+        const user = await db.findByIdAndDelete(req.params.id)
+        
+       
+
+      
+     res.send(200,user)
+    }
+    catch(error){
+        console.log(error)
+        res.status(500).send(error)
+
+    }
 }

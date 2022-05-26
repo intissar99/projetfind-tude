@@ -10,7 +10,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
-import Pagination from '@material-ui/lab/Pagination';
+
 
 const useStyles = makeStyles((theme) => ({
  
@@ -60,7 +60,7 @@ function Products() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                React useContext
+                Product
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -86,7 +86,7 @@ function Products() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    React Router
+                    Prouduct
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -111,7 +111,7 @@ function Products() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    React useContext
+                    Product
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -128,9 +128,7 @@ function Products() {
             </Card>
           </Grid>
           </Grid>
-          <Box my={4} className={classes.paginationContainer}>
-          <Pagination count={10} />
-        </Box>
+          
       </Container>
       </div>
   )

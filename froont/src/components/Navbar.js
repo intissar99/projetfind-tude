@@ -74,7 +74,7 @@ function Navbar() {
         </li>
         <li>
           <a>
-            <Link to={"/Product"}>Products </Link>
+            <Link to={"/Products"}>Products </Link>
           </a>
         </li>
       </ul>}
