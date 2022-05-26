@@ -11,6 +11,9 @@ import {
   Button,
 } from "@material-ui/core";
 
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
 const useStyle = makeStyles({
   table: {
     width: "60%",
@@ -47,10 +50,26 @@ function ListUsers() {
   });
 
   console.log(Users);
-  return (
-    <>
+  const deleteUsers =(id)=> {
+    axios.delete(`http://localhost:3001/deleteUsers/${id}`)
     
+    .then(() =>{
+      alert("user deleted");
+    })
+    .catch(()=>{
+      alert("try again")
+    })
+    
+  };
+  return (
+  
+  <Box sx={{ flexGrow: 1 }}>
+    <Grid container spacing={2}>
+    <Grid item xs={4}>
     <Sidebar/>
+    </Grid>
+    
+    <Grid item xs={8}>
     <Table className={classes.table}>
       <TableHead>
         <TableRow  className={classes.thead}>
@@ -82,7 +101,10 @@ function ListUsers() {
        
       </TableBody>
     </Table>
-    </>
+    </Grid>
+    </Grid>
+    </Box>
+    
   )
   
 }

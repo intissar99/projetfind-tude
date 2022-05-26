@@ -61,20 +61,19 @@ export default function AddProduct() {
   const handleChangeCategorie = (event) => {
     setCategorie(event.target.value);
   };
-  const createProduct = async (event) => {
+  const createProduct=async (event)=> {
     event.preventDefault()
-
     try {
-      const res = await axios.post("http://localhost:3000/createProduct", {
+      axios.post("http://localhost:3000/createProduct", {
         name: name,
         price: price,
         categorie: categorie,
-
+        
       })
-      alert("added a prod")
-    } catch (err) {
-      alert(err, "error")
-    }
+      alert("product bug");
+    }catch(error){
+        alert("try again");
+      }
   }
 
   return (

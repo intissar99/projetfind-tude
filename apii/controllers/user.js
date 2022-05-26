@@ -58,3 +58,9 @@ exports.fetchUsers=async function(req,res){
     }
 
 }
+//delete user 
+exports.deleteUsers=async function(req,res){
+    const id= req.params.id;
+    await db.findByIdAndRemove(id).exec();
+    res.send("item deleted");
+}
