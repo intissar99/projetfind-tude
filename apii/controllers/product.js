@@ -1,19 +1,20 @@
-const product= require("../models/product")
+const product = require("../models/product")
 
 
-exports.createproduct=async function(req,res){
-    
-    try{
-        const Product=await product.create({
-            name :req.body.name,
-            price: req.body.price ,
-            categorie :req.body.categorie,
-            
+exports.createproduct = async function (req, res) {
+    console.log("yooooooooo", req.body.imageUrl);
+    try {
+        const Product = await product.create({
+            name: req.body.name,
+            price: req.body.price,
+            categorie: req.body.categorie,
+            picture: req.body.imageUrl
+
         })
-     res.status(201).send(Product)
-      
+        res.status(201).send(Product)
+
     }
-    catch(error){
+    catch (error) {
         console.log(error)
         res.status(500).send(error)
 
@@ -21,20 +22,38 @@ exports.createproduct=async function(req,res){
 
 }
 //Fetsh products
-exports.fetchProducts=async function(req,res){
-    try{
-      
-        const products= await product.find({}).exec()
-        console.log(products)
-       
+exports.fetchProducts = async function (req, res) {
+    try {
 
-      
-     res.status(201).send(products)
+        const products = await product.find({}).exec()
+        console.log(products)
+
+
+
+        res.status(201).send(products)
     }
-    catch(error){
+    catch (error) {
         console.log(error)
         res.status(403).send(error)
 
     }
 
+}
+//delete product 
+exports.deleteProducts = async function (req, res) {
+    console.log(req.params.id)
+    try {
+
+        const product = await product.findByIdAndDelete(req.params.id)
+
+
+
+
+        res.send(200, product)
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).send(error)
+
+    }
 }

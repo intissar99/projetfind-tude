@@ -50,6 +50,18 @@ function ListProduct() {
   });
 
   console.log(Products);
+
+  const deleteProduct = async (id) => {
+
+    try {
+      await axios.delete(`http://localhost:3000/deleteProducts/${id}`)
+      alert("Product deleted");
+    }
+    catch (err) {
+      alert("try again")
+    }
+
+  };
   return (
 
     <Box sx={{ flexGrow: 1 }}>
@@ -57,17 +69,11 @@ function ListProduct() {
         <Grid item xs={4}>
           <Sidebar />
         </Grid>
-
-
-
         <Grid item xs={8}>
-
           <Table className={classes.table}>
             <TableHead>
               <TableRow className={classes.thead}>
-
-
-                <TableCell> name</TableCell>
+                <TableCell>name</TableCell>
                 <TableCell>price</TableCell>
                 <TableCell>categorie</TableCell>
 
@@ -85,7 +91,7 @@ function ListProduct() {
 
                     <TableCell>
                       <Button variant="contained" color="primary" style={{ marginRight: 10 }}  ></Button>
-                      <Button variant="contained" color="secondary"  >delete</Button>
+                      <Button variant="contained" color="secondary" onClick={() => { deleteProduct(product._id) }} >delete</Button>
                     </TableCell>
                   </TableRow>
                 ))

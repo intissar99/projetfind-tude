@@ -64,20 +64,20 @@ function Navbar() {
         :
 
         <ul>
-          <li>
-            <Link to={"/Contactus"}>Contact us </Link>
-          </li>
-          <li>
-            <a>
-              <Link to={"/Services"}>Services </Link>
-            </a>
-          </li>
-          <li>
-            <a>
-              <Link to={"/Product"}>Products </Link>
-            </a>
-          </li>
-        </ul>}
+        <li>
+          <Link to={"/Contactus"}>Contact us </Link>
+        </li>
+        <li>
+          <a>
+            <Link to={"/Services"}>Services </Link>
+          </a>
+        </li>
+        <li>
+          <a>
+            <Link to={"/Products"}>Products </Link>
+          </a>
+        </li>
+      </ul>}
 
       <ul>
         {user || admin ? (

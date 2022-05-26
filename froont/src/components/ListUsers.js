@@ -50,15 +50,15 @@ function ListUsers() {
   });
 
   console.log(Users);
-  const deleteUsers =(id)=> {
-    axios.delete(`http://localhost:3001/deleteUsers/${id}`)
+  const deleteUser =async (id)=> {
     
-    .then(() =>{
+    try {
+      await axios.delete(`http://localhost:3000/deleteUsers/${id}`)
       alert("user deleted");
-    })
-    .catch(()=>{
+    }
+    catch(err){
       alert("try again")
-    })
+    } 
     
   };
   return (
@@ -93,7 +93,7 @@ function ListUsers() {
              
              <TableCell>
               <Button variant="contained" color="primary" style={{marginRight: 10}}  ></Button> 
-              <Button variant="contained" color="secondary"  >delete</Button> 
+              <Button variant="contained" color="secondary"  onClick={()=>{deleteUser(user._id)}}>delete</Button> 
              </TableCell>
             </TableRow>
           ))
