@@ -5,7 +5,7 @@ mongoose.Promise= global.Promise
 const productSchema= new mongoose.Schema(
     {
        name:String,
-       price:String,
+       description:String,
        categorie:String,
        picture:String,
        //user:{type:Schema.Types.ObjectId,ref:"User"}

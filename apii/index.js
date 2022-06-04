@@ -4,6 +4,7 @@ const mongoose=require('mongoose')
 const userRoutes=require('./routes/userRoutes')
 const adminRoutes=require('./routes/adminRoutes')
 const productRoutes=require('./routes/productRoutes')
+const reclamationRoutes=require('./routes/reclamationRoutes')
 
 
 const cors=require('cors')
@@ -18,4 +19,6 @@ app.use(cors())
 app.use('/',userRoutes)
 app.use('/',adminRoutes)
 app.use('/',productRoutes)
+app.use('/',reclamationRoutes)
+
 app.listen(3000,()=>console.log("server is running"))

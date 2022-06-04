@@ -57,6 +57,26 @@ exports.fetchUsers=async function(req,res){
 
     }
 
+
+}
+exports.fetchUserOfRec=async function(req,res){
+    try{
+      const UsersOfRec=[]
+        const users = await db.find({}).exec()
+        console.log(users)
+        {users.map((user)=>{if (req.body.userId.includes(user._id)) UsersOfRec.push(user)})}
+       console.log("ab",UsersOfRec)
+
+
+      
+     res.status(201).send(UsersOfRec)
+    }
+    catch(error){
+        console.log(error)
+        res.status(403).send(error)
+
+    }
+
 }
 //delete user 
 exports.deleteUsers=async function(req,res){
@@ -76,3 +96,31 @@ exports.deleteUsers=async function(req,res){
 
     }
 }
+//update user
+exports.updateUser=async function(req,res){
+   
+    if (req.body.userId===req.params.id){
+        if (req.body.password){
+            const salt = await bcrypt.genSalt(10)
+            req.body.password = await bcrypt.hash(req.body.password)
+        } try{
+      
+            const updateduser = await db.findByIdAndUpdate(req.params.id, { $set: req.body},{new:true}  )
+            
+           
+    
+          
+         res.send(200,updateduser)
+        }
+        catch(error){
+            console.log(error)
+            res.status(500).send(error)
+    
+        }
+        
+    } else{
+        res.status(401).send("you can update only your account ")    }
+
+   
+}
+

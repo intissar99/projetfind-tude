@@ -48,6 +48,24 @@ const Reducers = (state, action) => {
         isFetching: false,
         error: false,
       }
+      case "UpdateStart":
+      return {
+        user: state.user,
+        isFetching: true,
+        error: false,
+      }
+    case "UpdateSuccess":
+      return {
+        user: action.payload,
+        isFetching: false,
+        error: false,
+      }
+    case "UpdateFailure":
+      return {
+        user: state.user,
+        isFetching: false,
+        error: true,
+      }
     default: return state
 
   }

@@ -6,7 +6,7 @@ exports.createproduct = async function (req, res) {
     try {
         const Product = await product.create({
             name: req.body.name,
-            price: req.body.price,
+            description: req.body.description,
             categorie: req.body.categorie,
             picture: req.body.imageUrl
 
@@ -26,7 +26,7 @@ exports.fetchProducts = async function (req, res) {
     try {
 
         const products = await product.find({}).exec()
-        console.log(products)
+        
 
 
 
@@ -44,12 +44,12 @@ exports.deleteProducts = async function (req, res) {
     console.log(req.params.id)
     try {
 
-        const product = await product.findByIdAndDelete(req.params.id)
+        const products = await product.findByIdAndDelete(req.params.id)
 
 
 
 
-        res.send(200, product)
+        res.send(200, products)
     }
     catch (error) {
         console.log(error)

@@ -10,10 +10,11 @@ import {
 } from "@material-ui/core";
 import Stack from "@mui/material/Stack";
 import {Context} from "../context/Context"
+import EditUser from "./EditUser"
 
 function Profile() {
   const {user} = useContext(Context)
-  console.log(user[0])
+  console.log(user)
   return (
     <div>
       <Grid>
@@ -28,7 +29,7 @@ function Profile() {
               src="https://images.pexels.com/photos/11780921/pexels-photo-11780921.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               style={{ width: "50px", height: "50px" }}
             />
-            <Stack direction="row" spacing={50}>
+            
               <Typography
                 
                 color="textSecondary"
@@ -38,9 +39,9 @@ function Profile() {
               >
                 {user[0].fullname}
               </Typography>
-              <input type="text" placeholder="name" />
-            </Stack>
-            <Stack direction="row" spacing={38}>
+             
+           
+           
               <Typography
                
                 color="textSecondary"
@@ -50,9 +51,7 @@ function Profile() {
               >
                 {user[0].username}
               </Typography>
-              <input type="text" placeholder="username" />
-            </Stack>
-            <Stack direction="row" spacing={50}>
+             
               <Typography
                 
                 color="textSecondary"
@@ -63,9 +62,9 @@ function Profile() {
                 {user[0].email}
               </Typography>
 
-              <input type="text" placeholder="email" />
-            </Stack>
+             
           </CardContent>
+          <EditUser user={user[0]}/>
         </Card>
       </Grid>
     </div>

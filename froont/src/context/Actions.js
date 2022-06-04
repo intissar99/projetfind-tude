@@ -35,3 +35,18 @@ export const LogOutAdmin = () => ({
     type: "LogOutAdmin"
 
 })
+
+//Update
+export const UpdateStart = () => ({
+    type: "UpdateStart"
+})
+//
+export const UpdateSuccess = (user) => ({
+    type: "UpdateSuccess", payload: user
+
+})
+//
+export const UpdateFailure = () => ({
+    type: "UpdateFailure"
+
+})

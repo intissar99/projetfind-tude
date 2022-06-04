@@ -48,6 +48,7 @@ function ListUsers() {
   useEffect(() => {
     fetchUsers();
   });
+  
 
   console.log(Users);
   const deleteUser =async (id)=> {
