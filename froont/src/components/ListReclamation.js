@@ -46,8 +46,8 @@ const userId= []
 
   const classes = useStyle();
   
-  const fetchReclamations = async(e) => {
-    e.preventDefault()
+  const fetchReclamations = async() => {
+
    try {const res = await axios.get("http://localhost:3000/fetchReclamation").then((res) => {
         setRec(res.data);
         {res.data.map((recla)=>{ if (recla.user && !(userId.includes(recla.user)))userId.push(recla.user)})}
@@ -91,6 +91,7 @@ console.log(error)
           <Table className={classes.table}>
             <TableHead>
               <TableRow className={classes.thead}>
+              <TableCell>email</TableCell>
                 <TableCell>user</TableCell>
                 <TableCell>subject</TableCell>
                 <TableCell>Read</TableCell>
@@ -106,6 +107,7 @@ console.log(error)
 
                     <TableCell>{reclamation.subject}</TableCell>
                     <TableCell>{reclamation.message}</TableCell>
+                    
                     
 
                     <TableCell>
