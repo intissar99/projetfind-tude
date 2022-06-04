@@ -5,9 +5,9 @@ import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
-// import 'dotenv/config'
-// const preset = "mrbielhx"
-// const url = 'https://api.cloudinary.com/v1_1/dkgglsra2/image/upload'
+//import 'dotenv/config'
+const preset = "mrbielhx"
+const url = 'https://api.cloudinary.com/v1_1/dkgglsra2/image/upload'
 
 const style = {
   position: "absolute",
@@ -20,47 +20,27 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const currencies = [
-  {
-    value: "USD",
-    label: "$",
-  },
-  {
-    value: "EUR",
-    label: "€",
-  },
-  {
-    value: "BTC",
-    label: "฿",
-  },
-  {
-    value: "JPY",
-    label: "¥",
-  },
-];
+
 export default function AddProduct() {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [open, setOpen] = useState(false);
-  const [currency, setCurrency] = useState("EUR");
   const [name, setName] = useState();
-  const [price, setPrice] = useState();
+  const [description, setDescr] = useState();
   const [categorie, setCategorie] = useState();
   const [fileImage, setFileImage] = useState("");
 
   console.log(process.env.preset);
   console.log(process.env.url);
 
-  const handleChange = (event) => {
-    setCurrency(event.target.value);
-  };
+
   const handleChangeName = (event) => {
     setName(event.target.value);
   };
-  const handleChangePrice = (event) => {
-    setPrice(event.target.value);
+  const handleChangeDescription = (event) => {
+    setDescr(event.target.value);
   };
   const handleChangeCategorie = (event) => {
     setCategorie(event.target.value);
@@ -75,9 +55,9 @@ export default function AddProduct() {
     var formData = new FormData();
     var file = e.target.files[0];
     formData.append("file", file);
-    formData.append("upload_preset", process.env.preset);
+    formData.append("upload_preset", preset);
     axios({
-      url: process.env.url,
+      url: url,
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       data: formData,
@@ -96,7 +76,7 @@ export default function AddProduct() {
     try {
       const res = axios.post("http://localhost:3000/createProduct", {
         name: name,
-        price: price || null,
+        description: description || null,
         categorie: categorie || null,
         imageUrl: fileImage.image1 || null
       });
@@ -141,19 +121,22 @@ export default function AddProduct() {
           </div>
           <div>
             <TextField
-              id="outlined-select-currency"
-              select
-              label="Select"
-              onChange={handleChange}
-              value={currency}
-              helperText="Please select your currency"
-            >
-              {currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
+              label="name"
+              placeholder="description"
+              fullWidth
+              required
+              onChange={handleChangeDescription}
+            />
+          </div>
+
+          <div>
+            <TextField
+              label="categorie"
+              placeholder="Enter categorie"
+              fullWidth
+              required
+              onChange={handleChangeCategorie}
+            />
           </div>
           <div>
             <button

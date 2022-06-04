@@ -1,11 +1,13 @@
 const mongoose = require("mongoose")
+const Schema=mongoose.Schema
 mongoose.Promise= global.Promise
 
 const reclamationSchema= new mongoose.Schema(
     {
-       fullname:String,
-       message:String,
+       
+      
        subject:String,
+       message:String,
        
        user:{type:Schema.Types.ObjectId,ref:"User"},
        product:{type:Schema.Types.ObjectId,ref:"Product"}

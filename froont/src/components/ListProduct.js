@@ -38,6 +38,7 @@ const useStyle = makeStyles({
 
 function ListProduct() {
   const [Products, setProducts] = useState([]);
+
   const classes = useStyle();
   const fetchProducts = () => {
     const res = axios.get("http://localhost:3000/fetchProducts").then((res) => {
@@ -45,6 +46,7 @@ function ListProduct() {
     });
   };
   console.log(Products)
+  //useffect : only render when the user open the page where the function is used 
   useEffect(() => {
     fetchProducts();
   });
@@ -74,7 +76,7 @@ function ListProduct() {
             <TableHead>
               <TableRow className={classes.thead}>
                 <TableCell>name</TableCell>
-                <TableCell>price</TableCell>
+                <TableCell>description</TableCell>
                 <TableCell>categorie</TableCell>
 
                 <TableCell>Action</TableCell>
@@ -86,7 +88,7 @@ function ListProduct() {
                   <TableRow className={classes.row}>
 
                     <TableCell>{product.name}</TableCell>
-                    <TableCell>{product.price}</TableCell>
+                    <TableCell>{product.description}</TableCell>
                     <TableCell>{product.categorie}</TableCell>
 
                     <TableCell>
