@@ -6,7 +6,7 @@ import Modal from "@mui/material/Modal";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 //import 'dotenv/config'
- const preset = "mrbielhx"
+const preset = "mrbielhx"
 const url = 'https://api.cloudinary.com/v1_1/dkgglsra2/image/upload'
 
 const style = {
@@ -35,11 +35,11 @@ export default function AddProduct() {
   console.log(process.env.preset);
   console.log(process.env.url);
 
-  
+
   const handleChangeName = (event) => {
     setName(event.target.value);
   };
-  const handleChangeDescription= (event) => {
+  const handleChangeDescription = (event) => {
     setDescr(event.target.value);
   };
   const handleChangeCategorie = (event) => {
@@ -128,14 +128,14 @@ export default function AddProduct() {
               onChange={handleChangeDescription}
             />
           </div>
-          
+
           <div>
             <TextField
               label="categorie"
               placeholder="Enter categorie"
               fullWidth
               required
-              onChange={ handleChangeCategorie}
+              onChange={handleChangeCategorie}
             />
           </div>
           <div>

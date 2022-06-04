@@ -18,9 +18,9 @@ const useStyle = makeStyles({
   table: {
     width: "60%",
     margin: "100px 0 0 250px",
-   position:"flex ",
-   top:0
-    
+    position: "flex ",
+    top: 0
+
   },
   thead: {
     "& > *": {
@@ -48,65 +48,64 @@ function ListUsers() {
   useEffect(() => {
     fetchUsers();
   });
-  
 
-  console.log(Users);
-  const deleteUser =async (id)=> {
-    
+
+  const deleteUser = async (id) => {
+
     try {
       await axios.delete(`http://localhost:3000/deleteUsers/${id}`)
       alert("user deleted");
     }
-    catch(err){
+    catch (err) {
       alert("try again")
-    } 
-    
+    }
+
   };
   return (
-  
-  <Box sx={{ flexGrow: 1 }}>
-    <Grid container spacing={2}>
-    <Grid item xs={4}>
-    <Sidebar/>
-    </Grid>
-    
-    <Grid item xs={8}>
-    <Table className={classes.table}>
-      <TableHead>
-        <TableRow  className={classes.thead}>
-          
-          
-          <TableCell> fullname</TableCell>
-          <TableCell>username</TableCell>
-          <TableCell>email</TableCell>
-          
-          <TableCell>Action</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {
-          Users.map((user) =>(
-            <TableRow className={classes.row}>
-             
-              <TableCell>{user.fullname}</TableCell>
-              <TableCell>{user.username}</TableCell>
-              <TableCell>{user.email}</TableCell>
-             
-             <TableCell>
-              <Button variant="contained" color="primary" style={{marginRight: 10}}  ></Button> 
-              <Button variant="contained" color="secondary"  onClick={()=>{deleteUser(user._id)}}>delete</Button> 
-             </TableCell>
-            </TableRow>
-          ))
-        }
-       
-      </TableBody>
-    </Table>
-    </Grid>
-    </Grid>
+
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <Sidebar />
+        </Grid>
+
+        <Grid item xs={8}>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow className={classes.thead}>
+
+
+                <TableCell> fullname</TableCell>
+                <TableCell>username</TableCell>
+                <TableCell>email</TableCell>
+
+                <TableCell>Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {
+                Users.map((user) => (
+                  <TableRow className={classes.row}>
+
+                    <TableCell>{user.fullname}</TableCell>
+                    <TableCell>{user.username}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+
+                    <TableCell>
+                      <Button variant="contained" color="primary" style={{ marginRight: 10 }}  ></Button>
+                      <Button variant="contained" color="secondary" onClick={() => { deleteUser(user._id) }}>delete</Button>
+                    </TableCell>
+                  </TableRow>
+                ))
+              }
+
+            </TableBody>
+          </Table>
+        </Grid>
+      </Grid>
     </Box>
-    
+
   )
-  
+
 }
 export default ListUsers;
