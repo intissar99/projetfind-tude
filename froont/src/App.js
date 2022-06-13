@@ -12,6 +12,7 @@ import ListUsers from "./components/ListUsers"
 import ListProducts from "./components/ListProduct"
 import ListReclamation from "./components/ListReclamation"
 import Products from "./components/Products"
+import Log from "./components/Login/Log"
 import { ContextProvider} from "./context/Context"
 import { React } from "react";
 
@@ -43,6 +44,9 @@ function App() {
           <Route path="/ListReclamation" element={<ListReclamation/>} />
           <Route path="/ListProduct"  element={<ListProducts/>} />
           <Route path ="/Products"  element={<Products/>} />
+          
+          <Route path="/Log" element={<Log />} />
+        
 
 
           

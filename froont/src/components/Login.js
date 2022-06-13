@@ -21,17 +21,20 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: "100vh",
   },
+ 
 }));
 
 function Login() {
   const navigate = useNavigate()
   const style = useStyles();
+ 
   const paperStyle = {
     padding: 20,
     height: "70vh",
     width: 280,
     margin: "20px auto",
   };
+  
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
   const [username, setusername] = useState("");
@@ -71,7 +74,8 @@ function Login() {
   return (
     <div className={style.root}>
       <Grid>
-        <Paper elevation={10} style={paperStyle}>
+        <Paper elevation={10} style={paperStyle}  >
+         
           <Grid align="center">
             <Avatar style={avatarStyle}>
               <LockOutlinedIcon />
@@ -109,8 +113,9 @@ function Login() {
           >
             login
           </Button>
-
-        </Paper>
+          </Paper>
+        
+        
       </Grid>
     </div>
   )

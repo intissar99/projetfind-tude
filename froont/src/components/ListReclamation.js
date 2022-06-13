@@ -41,7 +41,7 @@ function ListReclamation() {
   const [Reclamation, setRec] = useState([]);
   const [UsersRec, setUsersRec] = useState([]);
   const [ids, setIds] = useState([]);
-  //includes: va verifier si l'argument est inclus dans le tableau "UserId" dans ce cas 
+  //includes: va verifier si l'argument est inclus dans le tableau "User" dans ce cas 
   const fetchReclamations = async () => {
 
     try {
@@ -97,18 +97,19 @@ function ListReclamation() {
             </TableHead>
             <TableBody>
               {
-                Reclamation.map((reclamation, i) => (
+                Reclamation.map((reclamation) => (
                   <TableRow className={classes.row}>
-                    {console.log(UsersRec[0]._id)}
-                    {console.log(reclamation.user)}
+                    
 
-                    <TableCell>{(UsersRec[i]._id) === reclamation.user ? <p>{UsersRec[i].email}</p> : <p>unknown user</p>}</TableCell>
+                 
                     <TableCell>{reclamation.subject}</TableCell>
                     <TableCell>{reclamation.message}</TableCell>
 
                     <TableCell>
-                      <Button variant="contained" color="primary" style={{ marginRight: 10 }}  >Read more </Button>
-                      <Button variant="contained" color="secondary" onClick={() => { deleteReclamation(reclamation._id) }} >delete</Button>
+                    <Button variant="contained" color="primary" style={{ marginRight: 10 }}  >Read more </Button>
+                      
+                    <Button variant="contained" color="secondary" onClick={() => { deleteReclamation(reclamation._id) }} >delete</Button>
+                    <Button variant="contained" color="primary" >rep</Button>
                     </TableCell>
                   </TableRow>
                 ))
