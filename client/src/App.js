@@ -12,8 +12,8 @@ import ListUsers from "./components/ListUsers"
 import ListProducts from "./components/ListProduct"
 import ListReclamation from "./components/ListReclamation"
 import Products from "./components/Products"
-import { ContextProvider} from "./context/Context"
-import { React } from "react";
+import { ContextProvider } from "./context/Context"
+import { React, useState } from "react";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
@@ -22,7 +22,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 
 function App() {
-  
 
   return (
     <ContextProvider >
@@ -39,15 +38,15 @@ function App() {
           <Route path="/Services" element={<Services />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path="/ListUsers" element={<ListUsers/>} />
-          <Route path="/ListReclamation" element={<ListReclamation/>} />
-          <Route path="/ListProduct"  element={<ListProducts/>} />
-          <Route path ="/Products"  element={<Products/>} />
+          <Route path="/ListUsers" element={<ListUsers />} />
+          <Route path="/ListReclamation" element={<ListReclamation />} />
+          <Route path="/ListProduct" element={<ListProducts />} />
+          <Route path="/Products" element={<Products />} />
 
 
-          
+
         </Routes>
-        <Footer/>
+        <Footer />
 
 
       </BrowserRouter>

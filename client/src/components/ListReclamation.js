@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Sidebar from "./sidebar/Sidebar"
 import {
@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { Context } from "../context/Context"
 
 const useStyle = makeStyles({
   table: {
@@ -39,27 +40,19 @@ const useStyle = makeStyles({
 function ListReclamation() {
   const classes = useStyle();
   const [Reclamation, setRec] = useState([]);
-  const [UsersRec, setUsersRec] = useState([]);
-  const [ids, setIds] = useState([]);
   //includes: va verifier si l'argument est inclus dans le tableau "UserId" dans ce cas 
   const fetchReclamations = async () => {
-
     try {
       const res = await axios.get("http://localhost:3000/fetchReclamation").then((res) => {
         setRec(res.data);
-        { res.data.map((recla) => { if (recla.user && !(ids.includes(recla.user))) ids.push(recla.user) }) }
       });
-      console.log("22222", ids);
 
-      const resultat = await axios.post("http://localhost:3000/fetchUserOfRec", { ids }).then((res) => {
-        setUsersRec(res.data);
-
-      })
     }
     catch (error) {
       console.log(error)
     };
   }
+
   const deleteReclamation = async (id) => {
 
     try {
@@ -71,12 +64,14 @@ function ListReclamation() {
     }
 
   };
-  //useffect : only render when the user open the page where the function is used 
+  //useffect : only render when the user open the page where the function is used
   useEffect(() => {
+
     fetchReclamations();
   });
-  console.log(UsersRec)
-  console.log(Reclamation);
+  //can't read property undefiend of syntax " array[0].id "
+  //i need if condition for the display of the email of the user.
+  //maybe i can grabe the users form the listusers ??§§**
   return (
 
     <Box sx={{ flexGrow: 1 }}>
@@ -96,24 +91,24 @@ function ListReclamation() {
             </TableHead>
             <TableBody>
               {
-                Reclamation.map((reclamation, i) => (
+                Reclamation.map((recla, i) => (
                   <TableRow className={classes.row}>
-                    {console.log(UsersRec[0]._id)}
-                    {console.log(reclamation.user)}
+                    <TableCell>{recla.useremail}</TableCell>
+                    <>
+                      <TableCell>{recla.subject}</TableCell>
+                      <TableCell>{recla.message}</TableCell>
+                      <TableCell>
+                        <Button variant="contained" color="primary" style={{ marginRight: 10 }}  >Read more </Button>
+                        <Button variant="contained" color="secondary" onClick={() => { deleteReclamation(recla._id) }} >delete</Button>
+                      </TableCell>
+                    </>
 
-                    <TableCell>{(UsersRec[i]._id) === reclamation.user ? <p>{UsersRec[i].email}</p> : <p>unknown user</p>}</TableCell>
-                    <TableCell>{reclamation.subject}</TableCell>
-                    <TableCell>{reclamation.message}</TableCell>
 
 
-                    <TableCell>
-                      <Button variant="contained" color="primary" style={{ marginRight: 10 }}  >Read more </Button>
-                      <Button variant="contained" color="secondary" onClick={() => { deleteReclamation(reclamation._id) }} >delete</Button>
-                    </TableCell>
+
                   </TableRow>
                 ))
               }
-
             </TableBody>
           </Table>
         </Grid>

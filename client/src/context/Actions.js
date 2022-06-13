@@ -50,3 +50,16 @@ export const UpdateFailure = () => ({
     type: "UpdateFailure"
 
 })
+//populate the data
+export const addUsers = (users) => ({
+    type: "addUsers", payload: users
+
+})
+export const addProducts = (products) => ({
+    type: "addProducts", payload: products
+
+})
+export const addReclamations = (reclamations) => ({
+    type: "addReclamations", payload: reclamations
+
+})

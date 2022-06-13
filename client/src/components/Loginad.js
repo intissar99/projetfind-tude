@@ -55,7 +55,6 @@ function Loginad() {
     dispatch({ type: "LoginStartAdmin" })
     try {
       const res = await axios.post("http://localhost:3000/login", {
-
         username: username,
         password: password,
       })

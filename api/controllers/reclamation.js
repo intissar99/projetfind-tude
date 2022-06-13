@@ -4,7 +4,7 @@ exports.createReclamation = async function (req, res) {
         const reclamation = await rec.create({
             subject: req.body.subject,
             message: req.body.message,
-            user: req.body.userId,
+            useremail: req.body.email,
             product: req.body.productId,
         });
         res.status(201).send(reclamation);

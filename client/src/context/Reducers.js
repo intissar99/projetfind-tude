@@ -48,7 +48,7 @@ const Reducers = (state, action) => {
         isFetching: false,
         error: false,
       }
-      case "UpdateStart":
+    case "UpdateStart":
       return {
         user: state.user,
         isFetching: true,
@@ -65,6 +65,24 @@ const Reducers = (state, action) => {
         user: state.user,
         isFetching: false,
         error: true,
+      }
+    case "addUsers":
+      return {
+        users: action.payload,
+        isFetching: false,
+        error: false,
+      }
+    case "addProducts":
+      return {
+        products: action.payload,
+        isFetching: false,
+        error: false,
+      }
+    case "addReclamations":
+      return {
+        reclamations: action.payload,
+        isFetching: false,
+        error: false,
       }
     default: return state
 
