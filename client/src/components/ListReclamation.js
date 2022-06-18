@@ -40,18 +40,25 @@ const useStyle = makeStyles({
 function ListReclamation() {
   const classes = useStyle();
   const [Reclamation, setRec] = useState([]);
+  //includes: va verifier si l'argument est inclus dans le tableau "User" dans ce cas 
   //includes: va verifier si l'argument est inclus dans le tableau "UserId" dans ce cas 
   const fetchReclamations = async () => {
     try {
       const res = await axios.get("http://localhost:3000/fetchReclamation").then((res) => {
         setRec(res.data);
+       
+       
       });
+    
+      
 
     }
     catch (error) {
       console.log(error)
     };
   }
+ 
+  
 
   const deleteReclamation = async (id) => {
 
@@ -69,9 +76,7 @@ function ListReclamation() {
 
     fetchReclamations();
   });
-  //can't read property undefiend of syntax " array[0].id "
-  //i need if condition for the display of the email of the user.
-  //maybe i can grabe the users form the listusers ??§§**
+  
   return (
 
     <Box sx={{ flexGrow: 1 }}>
@@ -83,6 +88,7 @@ function ListReclamation() {
           <Table className={classes.table}>
             <TableHead>
               <TableRow className={classes.thead}>
+              <TableCell>email</TableCell>
                 <TableCell>user</TableCell>
                 <TableCell>subject</TableCell>
                 <TableCell>Read</TableCell>

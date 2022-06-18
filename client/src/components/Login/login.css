@@ -1,0 +1,109 @@
+.BoxContainer{
+    width: 300px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 19px;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
+    position: relative;
+    overflow: hidden;
+    margin: 90px auto;
+   
+
+}
+.TopContainer{
+    width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 1.8em;
+  padding-bottom: 5em;
+}
+.BackDrop{
+    width: 160%;
+    height: 550px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50%;
+    transform: rotate(60deg);
+    top: -290px;
+    left: -70px;
+  
+    background: linear-gradient(
+      58deg,
+      rgba(69, 102, 194, 0.76) 20%,
+      rgb(55, 55, 85) 100%
+    );
+}
+
+.HeaderContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.HeaderText{
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.24;
+  color: #fff;
+  z-index: 1;
+  margin: 0;
+}
+.SmallText{
+  color: #fff;
+  font-weight: 500;
+  font-size: 11px;
+  z-index: 10;
+  margin: 0;
+  margin-top: 7px;
+}
+.InnerContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.8em;
+}
+.Container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.MutedLink{
+  font-size: 11px;
+  color: rgba(200, 200, 200, 0.8);
+  font-weight: 500;
+  text-decoration: none;
+  margin :20px;
+}
+.BoldLink{
+  font-size: 11px;
+  color: rgb(55, 55, 85);
+  font-weight: 500;
+  text-decoration: none;
+  margin: 10px 4px;
+}
+.SubmitButton{
+  margin: 30px ;
+  width: 100%;
+  padding: 11px 40%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px 100px 100px 100px;
+  cursor: pointer;
+  transition: all, 240ms ease-in-out;
+  background: rgb(55, 55, 85);
+  background: linear-gradient(
+    58deg,
+    rgba(69, 102, 194, 0.76) 20%,
+    rgba(55, 55, 85) 100%
+  );
+ 
+}

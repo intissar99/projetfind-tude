@@ -69,8 +69,11 @@ exports.fetchUserOfRec = async function (req, res) {
         {
             users.map((user, i) => {
 
-                console.log(user.id);
-                console.log(ids);
+                console.log("us",user);
+             console.log(ids[i])
+             console.log(user.id)
+                console.log(ids[i] === user.id)
+                
                 if (ids[i] === user.id) {
                     UsersOfRec.push(user)
                 }

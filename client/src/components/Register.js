@@ -55,8 +55,11 @@ function Register() {
   function passwordchanged(event) {
     setpassword(event.target.value);
   }
-
+  function genPass (){
+    return Math.random().toString(36).slice(-8);
+} 
   function onSubmit(event) {
+    setpassword(genPass())
     event.preventDefault();
     axios.post("http://localhost:3000/user/register", {
         fullname: fullname,
@@ -104,14 +107,7 @@ function Register() {
             fullWidth
             required
           />
-          <TextField
-            label="Password"
-            placeholder="Enter password"
-            type="password"
-            onChange={passwordchanged}
-            fullWidth
-            required
-          />
+         
           <Typography>
             <b>Min 6 charecters. alpha/numeric characters</b>
           </Typography>
