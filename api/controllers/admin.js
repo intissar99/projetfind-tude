@@ -1,5 +1,7 @@
 const db = require("../models/admin")
 const bcrypt = require("bcrypt")
+const nodemailer = require("nodemailer");
+
 //user signup
 exports.createAdmin = async function (req, res) {
     try {
@@ -41,3 +43,28 @@ exports.loginAdmin = async function (req, res) {
     }
 
 }
+//ADMIN SEND EMAIL TO CLIENT
+exports.emailClient = async function (req, res) {
+    var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "testikhtibar@gmail.com",
+            pass: "0123Ikhtibar",
+        },
+    });
+
+    var mailOptions = {
+        from: "testikhtibar@gmail.com",
+        to: req.body.email,
+        subject: "Sending Email using Node.js",
+        text: req.body.message,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Email sent: " + info.response);
+        }
+    });
+};

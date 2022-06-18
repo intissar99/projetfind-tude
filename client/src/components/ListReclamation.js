@@ -13,7 +13,7 @@ import {
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Context } from "../context/Context"
-
+import ResponceToReclamation from "./ResponceToReclamation";
 const useStyle = makeStyles({
   table: {
     width: "100%",
@@ -100,6 +100,8 @@ function ListReclamation() {
                       <TableCell>
                         <Button variant="contained" color="primary" style={{ marginRight: 10 }}  >Read more </Button>
                         <Button variant="contained" color="secondary" onClick={() => { deleteReclamation(recla._id) }} >delete</Button>
+                        <ResponceToReclamation />
+
                       </TableCell>
                     </>
 
