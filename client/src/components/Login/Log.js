@@ -2,6 +2,8 @@ import "./login.css";
 import { React, useState } from "react";
 import SignupForm from "./SignupForm";
 import SigninForm  from "./SigninForm";
+import { AccountContext } from "./AccountContext";
+import { motion } from "framer-motion";
 const backdropVariants = {
   expanded: {
     width: "233%",
@@ -23,6 +25,7 @@ const expandingTransition = {
   stiffness: 30,
 };
 export default function Log() {
+  
   const [isExpanded, setExpanded] = useState(false);
   const [active, setActive] = useState("signin");
 
@@ -49,10 +52,10 @@ export default function Log() {
 
   const contextValue = { switchToSignup, switchToSignin };
   return (
+    <AccountContext.Provider value={contextValue}>
     <div className="BoxContainer">
       <div className="TopContainer">
-        <div
-          className="BackDrop"
+        <motion.div  className="BackDrop"
           initial={false}
           animate={isExpanded ? "expanded" : "collapsed"}
           variants={backdropVariants}
@@ -78,5 +81,6 @@ export default function Log() {
       {active === "signup" && <SignupForm />}
       </div>
     </div>
+    </AccountContext.Provider>
   );
 }

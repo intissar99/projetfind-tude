@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Sidebar from "./sidebar/Sidebar"
 import {
@@ -13,6 +13,7 @@ import {
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { Context } from "../context/Context"
 
 const useStyle = makeStyles({
   table: {
@@ -37,18 +38,19 @@ const useStyle = makeStyles({
   },
 });
 
-function ListUsers() {
+function ListUsers(props) {
   const [Users, setUsers] = useState([]);
+  const { users, dispatch } = useContext(Context)
   const classes = useStyle();
   const fetchUsers = () => {
     const res = axios.get("http://localhost:3000/fetchUsers").then((res) => {
       setUsers(res.data);
+      dispatch({ type: "addUsers", payload: Users })
     });
   };
   useEffect(() => {
-    fetchUsers();
   });
-
+  fetchUsers();
 
   const deleteUser = async (id) => {
 
@@ -61,6 +63,8 @@ function ListUsers() {
     }
 
   };
+  console.log("userscontext list usersers", users);
+
   return (
 
     <Box sx={{ flexGrow: 1 }}>

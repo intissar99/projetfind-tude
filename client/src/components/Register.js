@@ -1,7 +1,4 @@
-import { React, useState, useContext } from "react";
-import { Context } from "../context/Context"
-import { useNavigate } from "react-router-dom"
-
+import { useState } from "react";
 import axios from "axios";
 import {
   Grid,
@@ -13,7 +10,7 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,8 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Loginad() {
-  const navigate = useNavigate()
+function Register() {
   const style = useStyles();
   const paperStyle = {
     padding: 20,
@@ -35,36 +31,48 @@ function Loginad() {
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
+
+  const [fullname, setfullname] = useState("");
   const [username, setusername] = useState("");
+  const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-
-
-  const { isFetching, dispatch } = useContext(Context)
+  const navigate = useNavigate()
+  function fullnamechanged(event) {
+    setfullname(event.target.value);
+  }
+  function navigatelogin(){
+    navigate("/Login")
+  }
 
   function usernamechanged(event) {
     setusername(event.target.value);
   }
 
+  function emailchanged(event) {
+    setemail(event.target.value);
+  }
+
   function passwordchanged(event) {
     setpassword(event.target.value);
   }
-
-  const onSubmit = async (event) => {
-
+  function genPass (){
+    return Math.random().toString(36).slice(-8);
+} 
+  function onSubmit(event) {
+    setpassword(genPass())
     event.preventDefault();
-    dispatch({ type: "LoginStartAdmin" })
-    try {
-      const res = await axios.post("http://localhost:3000/login", {
-
+    axios.post("http://localhost:3000/user/register", {
+        fullname: fullname,
         username: username,
+        email: email,
         password: password,
       })
-      dispatch({ type: "LoginSuccessAdmin", payload: res.data })
-      navigate("/Dashboard")
-    } catch (err) {
-      dispatch({ type: "LoginFailureAdmin" })
-      alert("try again");
-    };
+      .then(() => {
+        alert("user added");
+      })
+      .catch(() => {
+        alert("try again");
+      });
   }
 
   return (
@@ -75,9 +83,15 @@ function Loginad() {
             <Avatar style={avatarStyle}>
               <LockOutlinedIcon />
             </Avatar>
-            <h2>Login </h2>
+            <h2>Sign Up </h2>
           </Grid>
-
+          <TextField
+            label="Fullname"
+            placeholder="Enter fullname"
+            onChange={fullnamechanged}
+            fullWidth
+            required
+          />
           <TextField
             label="Username"
             placeholder="Enter username"
@@ -85,15 +99,15 @@ function Loginad() {
             fullWidth
             required
           />
-
           <TextField
-            label="Password"
-            placeholder="Enter password"
-            type="password"
-            onChange={passwordchanged}
+            label="Email"
+            placeholder="Enter email"
+            type="Email"
+            onChange={emailchanged}
             fullWidth
             required
           />
+         
           <Typography>
             <b>Min 6 charecters. alpha/numeric characters</b>
           </Typography>
@@ -103,16 +117,25 @@ function Loginad() {
             variant="contained"
             style={btnstyle}
             fullWidth
-            disabled={isFetching}
             onClick={onSubmit}
           >
-            login
+            register
           </Button>
 
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            style={btnstyle}
+            fullWidth
+            onClick={navigatelogin}
+          >
+            if you are not registred login
+          </Button>
         </Paper>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default Loginad;
+export default Register;

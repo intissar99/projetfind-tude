@@ -1,5 +1,0 @@
-.HorizontalMargin{
-    display: flex;
-    width: ${({ margin }) =>
-      typeof margin === "string" ? margin : `${margin}px`}
-},
