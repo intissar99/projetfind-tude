@@ -35,12 +35,12 @@ function Register() {
   const [fullname, setfullname] = useState("");
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [passsword, setpassword] = useState("");
   const navigate = useNavigate()
   function fullnamechanged(event) {
     setfullname(event.target.value);
   }
-  function navigatelogin(){
+  function navigatelogin() {
     navigate("/Login")
   }
 
@@ -55,20 +55,25 @@ function Register() {
   function passwordchanged(event) {
     setpassword(event.target.value);
   }
-  function genPass (){
+  function genPass() {
     return Math.random().toString(36).slice(-8);
-} 
+  }
+
   function onSubmit(event) {
-    setpassword(genPass())
+    const pas = genPass()
+    setpassword(pas)
+    console.log(passsword);
+    console.log(pas);
     event.preventDefault();
     axios.post("http://localhost:3000/user/register", {
-        fullname: fullname,
-        username: username,
-        email: email,
-        password: password,
-      })
-      .then(() => {
+      fullname: fullname,
+      username: username,
+      email: email,
+      password: passsword,
+    })
+      .then((res) => {
         alert("user added");
+        console.log(res);
       })
       .catch(() => {
         alert("try again");
@@ -107,7 +112,7 @@ function Register() {
             fullWidth
             required
           />
-         
+
           <Typography>
             <b>Min 6 charecters. alpha/numeric characters</b>
           </Typography>

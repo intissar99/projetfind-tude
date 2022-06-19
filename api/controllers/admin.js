@@ -1,6 +1,8 @@
 const db = require("../models/admin")
 const bcrypt = require("bcrypt")
 const nodemailer = require("nodemailer");
+const dotenv = require('../.env')
+require('dotenv').config()
 
 //user signup
 exports.createAdmin = async function (req, res) {
@@ -48,13 +50,13 @@ exports.emailClient = async function (req, res) {
     var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "testikhtibar@gmail.com",
-            pass: "0123Ikhtibar",
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
         },
     });
 
     var mailOptions = {
-        from: "testikhtibar@gmail.com",
+        from: process.env.EMAIL_USER,
         to: req.body.email,
         subject: "Sending Email using Node.js",
         text: req.body.message,

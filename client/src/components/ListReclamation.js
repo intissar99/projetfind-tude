@@ -13,7 +13,7 @@ import {
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Context } from "../context/Context"
-import ResponceToReclamation from "./ResponceToReclamation";
+import RepReclamation from "./RepReclamation";
 const useStyle = makeStyles({
   table: {
     width: "100%",
@@ -46,19 +46,19 @@ function ListReclamation() {
     try {
       const res = await axios.get("http://localhost:3000/fetchReclamation").then((res) => {
         setRec(res.data);
-       
-       
+
+
       });
-    
-      
+
+
 
     }
     catch (error) {
       console.log(error)
     };
   }
- 
-  
+
+
 
   const deleteReclamation = async (id) => {
 
@@ -76,7 +76,7 @@ function ListReclamation() {
 
     fetchReclamations();
   });
-  
+
   return (
 
     <Box sx={{ flexGrow: 1 }}>
@@ -88,7 +88,7 @@ function ListReclamation() {
           <Table className={classes.table}>
             <TableHead>
               <TableRow className={classes.thead}>
-              <TableCell>email</TableCell>
+                <TableCell>email</TableCell>
                 <TableCell>user</TableCell>
                 <TableCell>subject</TableCell>
                 <TableCell>Read</TableCell>
@@ -106,7 +106,8 @@ function ListReclamation() {
                       <TableCell>
                         <Button variant="contained" color="primary" style={{ marginRight: 10 }}  >Read more </Button>
                         <Button variant="contained" color="secondary" onClick={() => { deleteReclamation(recla._id) }} >delete</Button>
-                        <ResponceToReclamation />
+                        <RepReclamation
+                        />
 
                       </TableCell>
                     </>

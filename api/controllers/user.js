@@ -1,5 +1,9 @@
 const db = require("../models/user")
+const nodemailer = require("nodemailer");
+
 const bcrypt = require("bcrypt")
+const dotenv = require('../.env')
+require('dotenv').config()
 //user signup
 exports.createUser = async function (req, res) {
     try {
@@ -11,6 +15,27 @@ exports.createUser = async function (req, res) {
             email: req.body.email,
             password: hashedPass
         })
+        var transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+        var mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: req.body.email,
+            subject: "Sending You login infos",
+            text: `Hello ${req.body.fullname} welcome to our site.\nPlease here you go your account's password ${req.body.password}`,
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent: " + info.response);
+            }
+        });
         res.status(201).send(user)
     }
     catch (error) {
@@ -69,11 +94,11 @@ exports.fetchUserOfRec = async function (req, res) {
         {
             users.map((user, i) => {
 
-                console.log("us",user);
-             console.log(ids[i])
-             console.log(user.id)
+                console.log("us", user);
+                console.log(ids[i])
+                console.log(user.id)
                 console.log(ids[i] === user.id)
-                
+
                 if (ids[i] === user.id) {
                     UsersOfRec.push(user)
                 }

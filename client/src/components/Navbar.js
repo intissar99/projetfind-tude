@@ -21,23 +21,19 @@ const style = {
 };
 
 function Navbar() {
-
   const navigate = useNavigate();
   const { admin, user, dispatch } = useContext(Context);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [nav, setnav] = useState(false);
-
   const handleLogOut = () => {
     dispatch({ type: "LogOutAdmin" });
     localStorage.removeItem("admin");
     navigate("/LoginAd");
     document.location.reload()
   };
-
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -64,20 +60,20 @@ function Navbar() {
         :
 
         <ul>
-        <li>
-          <Link to={"/Contactus"}>Contact us </Link>
-        </li>
-        <li>
-          <a>
-            <Link to={"/Services"}>Services </Link>
-          </a>
-        </li>
-        <li>
-          <a>
-            <Link to={"/Products"}>Products </Link>
-          </a>
-        </li>
-      </ul>}
+          <li>
+            <Link to={"/Contactus"}>Contact us </Link>
+          </li>
+          <li>
+            <a>
+              <Link to={"/Services"}>Services </Link>
+            </a>
+          </li>
+          <li>
+            <a>
+              <Link to={"/Products"}>Products </Link>
+            </a>
+          </li>
+        </ul>}
 
       <ul>
         {user || admin ? (
