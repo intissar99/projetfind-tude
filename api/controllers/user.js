@@ -13,7 +13,8 @@ exports.createUser = async function (req, res) {
             fullname: req.body.fullname,
             username: req.body.username,
             email: req.body.email,
-            password: hashedPass
+            password: hashedPass,
+           
         })
         var transporter = nodemailer.createTransport({
             service: "gmail",
@@ -28,6 +29,7 @@ exports.createUser = async function (req, res) {
             subject: "Sending You login infos",
             text: `Hello ${req.body.fullname} welcome to our site.\nPlease here you go your account's password ${req.body.password}`,
         };
+        
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {

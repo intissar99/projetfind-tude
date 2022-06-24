@@ -7,7 +7,6 @@ import {
   Storefront,
   AttachMoney,
   BarChart,
-  MailOutline,
   DynamicFeed,
   ChatBubbleOutline,
   WorkOutline,
@@ -47,12 +46,12 @@ export default function Sidebar() {
                 Products
               </li>
               </Link>
-            <Link to="/ListReclamation" className="link">
+            
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Reclamations
             </li>
-            </Link>
+         
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports
@@ -62,10 +61,12 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
+          <Link to="/ListReclamation" className="link">
             <li className="sidebarListItem">
               <DynamicFeed className="sidebarIcon" />
               Reclamation
             </li>
+            </Link>
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages

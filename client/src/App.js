@@ -5,7 +5,8 @@ import Home from "./components/Home"
 import Contactus from "./components/ContactUs"
 import Services from "./components/Services"
 import Profile from "./components/Profile"
-import Navbar from "./components/Navbar"
+
+import Nav from "./components/Nav";
 import Footer from "./components/Footer"
 import Dashboard from "./components/Dashboard"
 import ListUsers from "./components/ListUsers"
@@ -27,7 +28,7 @@ function App() {
   return (
     <ContextProvider >
       <BrowserRouter>
-        <Navbar />
+        <Nav/>
 
 
         <Routes>

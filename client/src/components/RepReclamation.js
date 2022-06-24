@@ -45,8 +45,8 @@ function RepReclamation() {
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
-            type="email"
+            label=" Message"
+            type="message"
             fullWidth
             variant="standard"
             onChange={(e) => { setMessage(e.target.value) }}

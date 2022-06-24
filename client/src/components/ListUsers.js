@@ -17,8 +17,8 @@ import { Context } from "../context/Context"
 
 const useStyle = makeStyles({
   table: {
-    width: "60%",
-    margin: "100px 0 0 250px",
+    width: "100%",
+    margin: "100px 0 0 0",
     position: "flex ",
     top: 0
 
@@ -96,7 +96,6 @@ function ListUsers(props) {
                     <TableCell>{user.email}</TableCell>
 
                     <TableCell>
-                      <Button variant="contained" color="primary" style={{ marginRight: 10 }}  ></Button>
                       <Button variant="contained" color="secondary" onClick={() => { deleteUser(user._id) }}>delete</Button>
                     </TableCell>
                   </TableRow>

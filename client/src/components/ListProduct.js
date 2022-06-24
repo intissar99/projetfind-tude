@@ -92,7 +92,7 @@ function ListProduct() {
                     <TableCell>{product.categorie}</TableCell>
 
                     <TableCell>
-                      <Button variant="contained" color="primary" style={{ marginRight: 10 }}  ></Button>
+                      
                       <Button variant="contained" color="secondary" onClick={() => { deleteProduct(product._id) }} >delete</Button>
                     </TableCell>
                   </TableRow>

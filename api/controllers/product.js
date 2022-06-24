@@ -2,7 +2,7 @@ const product = require("../models/product")
 
 
 exports.createproduct = async function (req, res) {
-    console.log("yooooooooo", req.body.imageUrl);
+    console.log(req.body.imageUrl);
     try {
         const Product = await product.create({
             name: req.body.name,

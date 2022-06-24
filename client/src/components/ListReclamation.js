@@ -20,7 +20,6 @@ const useStyle = makeStyles({
     margin: "100px 0 0 0",
     position: "flex ",
     top: 0
-
   },
   thead: {
     "& > *": {
@@ -88,10 +87,10 @@ function ListReclamation() {
           <Table className={classes.table}>
             <TableHead>
               <TableRow className={classes.thead}>
-                <TableCell>email</TableCell>
-                <TableCell>user</TableCell>
-                <TableCell>subject</TableCell>
-                <TableCell>Read</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Subject</TableCell>
+                <TableCell>Message</TableCell>
+                
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
@@ -106,8 +105,12 @@ function ListReclamation() {
                       <TableCell>
                         <Button variant="contained" color="primary" style={{ marginRight: 10 }}  >Read more </Button>
                         <Button variant="contained" color="secondary" onClick={() => { deleteReclamation(recla._id) }} >delete</Button>
-                        <RepReclamation
-                        />
+                        
+
+                      </TableCell>
+                      <TableCell>
+                      <RepReclamation/>
+         
 
                       </TableCell>
                     </>

@@ -16,12 +16,10 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
  
   Container: {
-    paddingTop: theme.spacing(3)
+    paddingTop: theme.spacing(3),
+    margin: "70px 50px "
   },
-  Title: {
-    fontWeight: 800,
-    paddingBottom: theme.spacing(3)
-  },
+  
   card: {
     maxWidth: "100%",
   },
@@ -60,9 +58,7 @@ function Products() {
   return (
     <div>
     <Container maxWidth="lg" className={classes.Container}>
-    <Typography variant="h4" className={classes.Title}>
-      Articles
-    </Typography>
+   
     <Grid container spacing={3}>
     { Products.map((product) => (
       <Grid item xs={12} sm={6} md={4}>
