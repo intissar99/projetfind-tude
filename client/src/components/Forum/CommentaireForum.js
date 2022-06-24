@@ -1,21 +1,21 @@
 import React from 'react'
+import "./commentaire.css"
 
 function CommentaireForum() {
   return (
-    <form onSubmit={onSubmit}>
+    <form>
       <textarea
         className="comment-form-textarea"
         value={text}
-        
-      />
-      <button className="comment-form-button" disabled={isTextareaDisabled}>
+        />
+      <button className="comment-form-button" >
        submitlabel
       </button>
     
         <button
           type="button"
           className="comment-form-button comment-form-cancel-button"
-          onClick={handleCancel}
+          
         >
           Cancel
         </button>
