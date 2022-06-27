@@ -6,6 +6,7 @@ const adminRoutes = require('./routes/adminRoutes')
 const productRoutes = require('./routes/productRoutes')
 const reclamationRoutes = require('./routes/reclamationRoutes')
 const commentRoutes = require('./routes/commentRoutes')
+const repliesRoutes = require('./routes/repliesRoutes')
 
 
 const cors = require('cors')
@@ -22,5 +23,6 @@ app.use('/', adminRoutes)
 app.use('/', productRoutes)
 app.use('/', reclamationRoutes)
 app.use('/', commentRoutes)
+app.use('/', repliesRoutes)
 
 app.listen(3000, () => console.log("server is running"))

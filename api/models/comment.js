@@ -4,10 +4,7 @@ mongoose.Promise = global.Promise
 const commentSchema = new mongoose.Schema(
     {
         comment: String,
-        replies: Array,
         user: String
-
-
 
     },
     {
@@ -15,5 +12,5 @@ const commentSchema = new mongoose.Schema(
 
     }
 )
-const comment = mongoose.model("comments", commentSchema)
+const comment = mongoose.model("comment", commentSchema)
 module.exports = comment
