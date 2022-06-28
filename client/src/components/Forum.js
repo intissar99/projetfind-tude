@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import { Replies } from "./Replies";
+import { Answer } from "./Answer";
 
 
 export const Forum = () => {
@@ -35,7 +36,8 @@ export const Forum = () => {
     const fetchCommets = async () => {
         try {
             const res = await axios.get("http://localhost:3000/fetchComments").then((res) => {
-                setComments(res.data);
+                const orgcomm = res.data.reverse()
+                setComments(orgcomm);
             });
         }
         catch (error) {
