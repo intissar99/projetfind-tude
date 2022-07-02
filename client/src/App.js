@@ -16,7 +16,7 @@ import Products from "./components/Products"
 import Log from "./components/Login/Log"
 import { ContextProvider } from "./context/Context"
 import { React } from "react";
-import { Forum } from "./components/Forum"
+import Commentaires from "./components/Forum/Commentaires"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 
@@ -44,7 +44,7 @@ function App() {
           <Route path="/ListReclamation" element={<ListReclamation />} />
           <Route path="/ListProduct" element={<ListProducts />} />
           <Route path="/Products" element={<Products />} />
-          <Route path="/Forum" element={<Forum />} />
+          <Route path="/Commentaires" element={<Commentaires />} />
           <Route path="/Log" element={<Log />} />
 
 
