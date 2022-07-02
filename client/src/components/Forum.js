@@ -11,12 +11,12 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import { Replies } from "./Replies";
+import { Answer } from "./Answer";
 
 
 export const Forum = () => {
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
-    const [show, setShow] = useState(false)
     const { user } = useContext(Context)
 
     const createComment = async (event) => {
@@ -36,15 +36,14 @@ export const Forum = () => {
     const fetchCommets = async () => {
         try {
             const res = await axios.get("http://localhost:3000/fetchComments").then((res) => {
-                setComments(res.data);
+                const orgcomm = res.data.reverse()
+                setComments(orgcomm);
             });
         }
         catch (error) {
             console.log(error)
         };
     }
-    console.log(comments);
-
     useEffect(() => {
         fetchCommets();
     });
@@ -133,7 +132,7 @@ export const Forum = () => {
                         component="p"
                         gutterBottom
                     >
-                        please keep -18 guys
+                        to keep it pro
                     </Typography>
                     {
                         comments.map((comment) => {
@@ -151,19 +150,7 @@ export const Forum = () => {
                                         >
                                             {comment.comment}
                                         </Typography>
-                                        {/* <Box
-                                            m={1}
-                                            display="flex"
-                                            justifyContent="flex-end"
-                                            alignItems="flex-end"
-                                            sx={"boxDefault"}
-                                        > */}
-                                        {show ? <Replies sx={{ maxWidth: 1000 }} /> : <Button variant="outlined" onClick={() => setShow(true)} color="primary" sx={{ height: 40 }}>
-                                            REPLY
-                                        </Button>}
-
-                                        {/* </Box> */}
-
+                                        <Replies commentid={comment._id} sx={{ maxWidth: 1000 }} />
                                     </CardContent>
                                 </Card>
                             )

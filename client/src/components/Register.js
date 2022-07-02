@@ -51,10 +51,6 @@ function Register() {
   function emailchanged(event) {
     setemail(event.target.value);
   }
-
-  function passwordchanged(event) {
-    setpassword(event.target.value);
-  }
   function genPass() {
     return Math.random().toString(36).slice(-8);
   }
@@ -62,18 +58,15 @@ function Register() {
   function onSubmit(event) {
     const pas = genPass()
     setpassword(pas)
-    console.log(passsword);
-    console.log(pas);
     event.preventDefault();
     axios.post("http://localhost:3000/user/register", {
       fullname: fullname,
       username: username,
       email: email,
-      password: passsword,
+      password: pas,
     })
       .then((res) => {
         alert("user added");
-        console.log(res);
       })
       .catch(() => {
         alert("try again");

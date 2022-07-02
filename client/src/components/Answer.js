@@ -10,33 +10,33 @@ import {
 } from "@material-ui/core";
 import Stack from '@mui/material/Stack';
 import axios from "axios";
-import { Answer } from "./Answer";
 
-export const Replies = ({ commentid }) => {
-    const [reply, setreply] = useState("");
-    const [replies, setreplies] = useState([]);
+export const Answer = ({ replyId }) => {
+    const [answer, setreply] = useState("");
+    const [answers, setanswers] = useState([]);
     const [show, setShow] = useState(false)
     const { user } = useContext(Context)
-
-    const createReply = async (event) => {
+    console.log(answers);
+    const createAnswer = async (event) => {
         event.preventDefault();
         try {
-            const res = axios.post("http://localhost:3000/replies", {
-                reply: reply,
+            console.log(answer, user[0].username, replyId);
+            const res = axios.post("http://localhost:3000/answer", {
+                answer: answer,
                 user: user[0].username,
-                comment: commentid
+                replyId: replyId
             });
-            alert("reply Added");
+            alert("answer Added");
             console.log(res);
         } catch (error) {
-            alert("Failed to reply");
+            alert("Failed to answer");
         }
     };
-    const fetchReplies = async () => {
+    const fetchAnswers = async () => {
         try {
-            const res = await axios.post("http://localhost:3000/fetchReplies", { commentId: commentid }).then((res) => {
-                const orgrep = res.data.reverse()
-                setreplies(orgrep);
+            const res = await axios.post("http://localhost:3000/fetchanswer", { replyId: replyId }).then((res) => {
+                const organs = res.data
+                setanswers(organs);
             });
         }
         catch (error) {
@@ -44,7 +44,7 @@ export const Replies = ({ commentid }) => {
         };
     }
     useEffect(() => {
-        fetchReplies();
+        fetchAnswers();
     });
 
     return (
@@ -55,13 +55,13 @@ export const Replies = ({ commentid }) => {
                         <CardContent>
                             <form>
                                 <Stack spacing={2}>
-                                    {replies.map((reply) => {
+                                    {answers.map((answer) => {
                                         return (
                                             <Grid item xs={12} >
                                                 <Typography
                                                     style={{ bgcolor: "info" }} gutterBottom variant="h5"
                                                 >
-                                                    {reply.user}
+                                                    {answer.user}
                                                 </Typography>
                                                 <Typography
                                                     variant="body2"
@@ -69,9 +69,7 @@ export const Replies = ({ commentid }) => {
                                                     component="p"
                                                     gutterBottom
                                                 >
-                                                    {reply.reply}
-                                                    <Answer replyId={reply._id} />
-
+                                                    {answer.answer}
                                                 </Typography>
                                             </Grid>)
                                     })}
@@ -87,15 +85,15 @@ export const Replies = ({ commentid }) => {
 
                                         />
                                     </Grid>
-                                    <Button variant="outlined" onClick={createReply} color="primary" sx={{ height: 40 }}>
-                                        REPLY
+                                    <Button variant="outlined" onClick={createAnswer} color="primary" sx={{ height: 40 }}>
+                                        ANSWER
                                     </Button>
                                 </Stack>
                             </form>
                         </CardContent>
                     </Card>
                 </Grid>
-                : <Button variant="outlined" onClick={() => setShow(true)} color="primary" sx={{ height: 40 }}>
+                : <Button variant="none" onClick={() => setShow(true)} color="primary" sx={{ height: 40 }}>
                     REPLY
                 </Button>}
         </div>
