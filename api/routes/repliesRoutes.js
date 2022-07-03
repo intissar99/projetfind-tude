@@ -4,6 +4,8 @@ const router = express.Router();
 
 router.post("/replies", replies.createReplies);
 router.post("/fetchReplies", replies.fetchReplies)
-// router.delete("/deleteReclamation/:id", reclamation.deleteReclamation);
+
+router.delete("/deleteReply/:id", replies.deleteReply);
+router.put("/updateReply/:id", replies.updateReply);
 
 module.exports = router;

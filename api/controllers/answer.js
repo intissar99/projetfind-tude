@@ -33,3 +33,35 @@ exports.fetchAnswers = async function (req, res) {
         res.status(403).send(error);
     }
 };
+exports.deleteAnswer = async function (req, res) {
+    console.log(req.params.id);
+    try {
+       const Answer= await answersModel.findByIdAndDelete(req.params.id);
+
+        res.send(200,  Answer);
+   } catch (error) {
+       console.log(error);
+       res.status(500).send(error);
+   }
+};
+
+//update user
+exports.updateAnswer= async function (req, res) {
+
+   
+       try {
+
+           const updateAnswer= await answersModel.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+
+
+
+
+           res.send(200, updateAnswer)
+       }
+       catch (error) {
+           console.log(error)
+           res.status(500).send(error)
+
+       }
+
+   }

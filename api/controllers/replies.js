@@ -1,5 +1,6 @@
 const repliesModel = require("../models/replies");
 
+
 exports.createReplies = async function (req, res) {
     try {
         const reply = await repliesModel.create({
@@ -47,14 +48,38 @@ exports.fetchReplies = async function (req, res) {
 //     }
 // };
 
-// exports.deleteReclamation = async function (req, res) {
-//     console.log(req.params.id);
-//     try {
-//         const reclamations = await commentModel.findByIdAndDelete(req.params.id);
+exports.deleteReply = async function (req, res) {
+     console.log(req.params.id);
+     try {
+        const Reply= await repliesModel.findByIdAndDelete(req.params.id);
 
-//         res.send(200, reclamations);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).send(error);
-//     }
-// };
+         res.send(200, Reply);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+ };
+
+//update user
+exports.updateReply = async function (req, res) {
+
+    
+        try {
+
+            const updateReply= await repliesModel.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+
+
+
+
+            res.send(200, updateReply)
+        }
+        catch (error) {
+            console.log(error)
+            res.status(500).send(error)
+
+        }
+
+    }
+
+
+

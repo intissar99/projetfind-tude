@@ -39,14 +39,36 @@ exports.replyToComment = async function (req, res) {
     }
 };
 
-// exports.deleteReclamation = async function (req, res) {
-//     console.log(req.params.id);
-//     try {
-//         const reclamations = await commentModel.findByIdAndDelete(req.params.id);
 
-//         res.send(200, reclamations);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).send(error);
-//     }
-// };
+exports.deleteComment = async function (req, res) {
+    console.log(req.params.id);
+    try {
+       const Comment= await commentModel.findByIdAndDelete(req.params.id);
+
+        res.send(200, Comment);
+   } catch (error) {
+       console.log(error);
+       res.status(500).send(error);
+   }
+};
+
+//update 
+exports.updateComment = async function (req, res) {
+
+   
+       try {
+
+           const updateComment= await commentModel.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+
+
+
+
+           res.send(200, updateComment)
+       }
+       catch (error) {
+           console.log(error)
+           res.status(500).send(error)
+
+       }
+
+   }
