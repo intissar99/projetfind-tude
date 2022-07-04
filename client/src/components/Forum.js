@@ -1,10 +1,10 @@
-import { React, useState,useEffect } from "react";
+import { React, useState, useContext, useEffect } from "react";
+import { Context } from "../context/Context";
 import EditComment from "./EditComment"
 import {
   Box,
   Grid,
   TextField,
-  Button,
   Card,
   CardContent,
   Typography,
@@ -17,7 +17,7 @@ import { Answer } from "./Answer";
 export const Forum = () => {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
-
+  const [Updatedcomment, setUpdatedComment] = useState("");
 
   const { user } = useContext(Context);
 
@@ -35,7 +35,7 @@ export const Forum = () => {
       alert("Failed to comment");
     }
   };
-  
+ 
   const fetchCommets = async () => {
     try {
       const res = await axios
@@ -167,8 +167,9 @@ export const Forum = () => {
                     >
                       {comment.comment}
                     </Typography>
-                    <EditComment/>
-                    <Button>Delete</Button>
+                    {user[0].username===comment.user ? <> <EditComment commentid={comment._id}/> <Button>Delete</Button> </>
+                    :null}
+                    
                     <Replies commentid={comment._id} sx={{ maxWidth: 1000 }} />
                   </CardContent>
                 </Card>

@@ -5,7 +5,7 @@ import Home from "./components/Home"
 import Contactus from "./components/ContactUs"
 import Services from "./components/Services"
 import Profile from "./components/Profile"
-
+import {Forum }from "./components/Forum"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer"
 import Dashboard from "./components/Dashboard"
@@ -46,6 +46,7 @@ function App() {
           <Route path="/Products" element={<Products />} />
           <Route path="/Commentaires" element={<Commentaires />} />
           <Route path="/Log" element={<Log />} />
+          <Route path="/Forum" element={<Forum />} />
 
 
 

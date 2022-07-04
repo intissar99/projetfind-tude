@@ -28,8 +28,8 @@ const style = {
   p: 4,
 };
 
-function EditComment (props) {
-  const navigate = useNavigate();
+function EditComment ({commentid}) {
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -41,21 +41,23 @@ function EditComment (props) {
     setUpdatedComment(event.target.value);
   };
  
-  };
-  const UpdateComment = async (commentid, event) => {
+  
+  const UpdateComment = async ( event) => {
     event.preventDefault();
 
     try {
+      console.log(commentid)
+      console.log(Updatedcomment);
       const res = await axios.put(
         `http://localhost:3000/updateComment/${commentid}`,
-        { updatedComment }
+        { comment : Updatedcomment }
       );
       console.log(res);
       
     } catch (err) {
       alert("try again");
     }
-    console.log(updatedComment);
+    
   };
   return (
     <div>
@@ -113,6 +115,7 @@ function EditComment (props) {
     </section>
       </Modal>
     </div>
-  );
+  ); 
+  }
 
-export default Profil;
+export default EditComment;
