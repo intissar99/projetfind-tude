@@ -16,6 +16,8 @@ export const Replies = ({ commentid }) => {
     const [reply, setreply] = useState("");
     const [replies, setreplies] = useState([]);
     const [show, setShow] = useState(false)
+    const [y, sety] = useState(true)
+
     const { user } = useContext(Context)
 
     const createReply = async (event) => {
@@ -55,24 +57,45 @@ export const Replies = ({ commentid }) => {
                         <CardContent>
                             <form>
                                 <Stack spacing={2}>
-                                    {replies.map((reply) => {
+                                    {replies.map((reply, i) => {
                                         return (
+
                                             <Grid item xs={12} >
                                                 <Typography
                                                     style={{ bgcolor: "info" }} gutterBottom variant="h5"
                                                 >
                                                     {reply.user}
                                                 </Typography>
-                                                <Typography
-                                                    variant="body2"
-                                                    color="textSecondary"
-                                                    component="p"
-                                                    gutterBottom
-                                                >
-                                                    {reply.reply}
-                                                    <Answer replyId={reply._id} />
+                                                {
+                                                    y ? <Grid>
+                                                        <Typography
+                                                            variant="body2"
+                                                            color="textSecondary"
+                                                            component="p"
+                                                            gutterBottom
+                                                        >
+                                                            {reply.reply}
+                                                            <Answer replyId={reply._id} />
+                                                            <Button variant="outlined" onClick={() => sety(false)}>
+                                                                EDIT REPLY
+                                                            </Button>
+                                                        </Typography>
+                                                    </Grid> : <Grid>
+                                                        <TextField
+                                                            name="reply"
+                                                            placeholder="Enter reply"
+                                                            label="reply"
+                                                            variant="outlined"
+                                                            fullWidth
+                                                            value={reply.reply}
+                                                            required
+                                                        />
+                                                        <Button >
+                                                            subbmit YOUR reply
+                                                        </Button>
+                                                    </Grid>
+                                                }
 
-                                                </Typography>
                                             </Grid>)
                                     })}
                                     <Grid item xs={12} >
