@@ -52,9 +52,6 @@ function Navbar() {
           <img src={logo} alt="" />
         </Link>
       </a>
-
-
-
       {admin ?
         <AddProduct sx={style} />
         :
@@ -105,7 +102,9 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">profile</Typography>
+                <Typography textAlign="center">
+                  <Link to={"/profile"}>profile</Link>
+                </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
                 <Typography textAlign="center" onClick={handleLogOut}>

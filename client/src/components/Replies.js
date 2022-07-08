@@ -45,6 +45,17 @@ export const Replies = ({ commentid }) => {
             console.log(error)
         };
     }
+    const deleteReply = async (id) => {
+
+        try {
+            await axios.delete(`http://localhost:3000/deleteReply/${id}`)
+            alert(" Deleted");
+        }
+        catch (err) {
+            alert("try again")
+        }
+
+    };
     useEffect(() => {
         fetchReplies();
     });
@@ -66,6 +77,7 @@ export const Replies = ({ commentid }) => {
                                                 >
                                                     {reply.user}
                                                 </Typography>
+
                                                 {
                                                     y ? <Grid>
                                                         <Typography
@@ -76,9 +88,18 @@ export const Replies = ({ commentid }) => {
                                                         >
                                                             {reply.reply}
                                                             <Answer replyId={reply._id} />
-                                                            <Button variant="outlined" onClick={() => sety(false)}>
-                                                                EDIT REPLY
-                                                            </Button>
+                                                            {
+                                                                user[0].username === reply.user ?
+                                                                    <>
+                                                                        <Button variant="outlined" onClick={() => sety(false)}>
+                                                                            EDIT REPLY
+                                                                        </Button>
+                                                                        <Button variant="outlined" onClick={() => { deleteReply(reply._id) }}>
+                                                                            DELETE
+                                                                        </Button>
+                                                                    </> : null
+                                                            }
+
                                                         </Typography>
                                                     </Grid> : <Grid>
                                                         <TextField

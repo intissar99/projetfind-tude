@@ -45,6 +45,17 @@ export const Answer = ({ replyId }) => {
             console.log(error)
         };
     }
+    const deleteAnswer = async (id) => {
+
+        try {
+            await axios.delete(`http://localhost:3000/deleteAnswer/${id}`)
+            alert(" Deleted");
+        }
+        catch (err) {
+            alert("try again")
+        }
+
+    };
     useEffect(() => {
         fetchAnswers();
     });
@@ -76,9 +87,16 @@ export const Answer = ({ replyId }) => {
                                                             >
                                                                 {answer.answer}
                                                             </Typography>
-                                                            <Button onClick={() => setx(false)}>
-                                                                EDIT YOUR ANSWER
-                                                            </Button>
+                                                            {
+                                                                user[0].username === answer.user ? <>
+                                                                    <Button variant="outlined" onClick={() => setx(false)}>
+                                                                        EDIT YOUR ANSWER
+                                                                    </Button>
+                                                                    <Button variant="outlined" onClick={() => { deleteAnswer(answer._id) }}>
+                                                                        DELETE
+                                                                    </Button></> : null
+                                                            }
+
                                                         </Grid>
                                                         :
                                                         <Grid>

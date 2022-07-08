@@ -35,7 +35,7 @@ export const Forum = () => {
       alert("Failed to comment");
     }
   };
- 
+
   const fetchCommets = async () => {
     try {
       const res = await axios
@@ -48,13 +48,23 @@ export const Forum = () => {
       console.log(error);
     }
   };
+  const deleteComment = async (id) => {
+
+    try {
+      await axios.delete(`http://localhost:3000/deleteComment/${id}`)
+      alert(" Deleted");
+    }
+    catch (err) {
+      alert("try again")
+    }
+
+  };
   useEffect(() => {
     fetchCommets();
   });
 
   return (
     <div>
-      {" "}
       <Grid>
         <Card
           style={{ maxWidth: 1000, padding: "20px 5px", margin: " 90px auto" }}
@@ -167,9 +177,9 @@ export const Forum = () => {
                     >
                       {comment.comment}
                     </Typography>
-                    {user[0].username===comment.user ? <> <EditComment commentid={comment._id}/> <Button>Delete</Button> </>
-                    :null}
-                    
+                    {user[0].username === comment.user ? <> <EditComment commentid={comment._id} /> <Button onClick={() => { deleteComment(comment._id) }}>Delete</Button> </>
+                      : null}
+
                     <Replies commentid={comment._id} sx={{ maxWidth: 1000 }} />
                   </CardContent>
                 </Card>
