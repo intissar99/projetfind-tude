@@ -1,4 +1,4 @@
-import{React,useContext}  from "react";
+import { React, useContext } from "react";
 import {
   Grid,
   TextField,
@@ -9,11 +9,11 @@ import {
   type,
 } from "@material-ui/core";
 import Stack from "@mui/material/Stack";
-import {Context} from "../context/Context"
+import { Context } from "../context/Context"
 import Edit from "./Edit"
 
 function Profile() {
-  const {user} = useContext(Context)
+  const { user } = useContext(Context)
   console.log(user)
   return (
     <div>
@@ -26,21 +26,20 @@ function Profile() {
               Profile
             </Typography>
             <img
-              src= {user[0].picture}
+              // src={user[0].picture}
               style={{ width: "50px", height: "50px" }}
+              alt=""
             />
-          <Stack direction="row" spacing={2}>
-          <Typography
-                
+            <Stack direction="row" spacing={2}>
+              <Typography
                 color="textSecondary"
                 component="p"
                 gutterBottom
                 variant="h5"
               >
-              Fullname
+                Fullname
               </Typography>
-            <Typography
-                
+              <Typography
                 color="textSecondary"
                 component="p"
                 gutterBottom
@@ -48,67 +47,49 @@ function Profile() {
               >
                 {user[0].fullname}
               </Typography>
-             
-           
-           
-              
             </Stack>
             <Stack direction="row" spacing={2}>
-          <Typography
-                
-                color="textSecondary"
-                component="p"
-                gutterBottom
-                variant="h5"
-              >
-              Username
-              </Typography>
-            <Typography
-                
-                color="textSecondary"
-                component="p"
-                gutterBottom
-                variant="h6"
-              >
-               {user[0].username}
-              </Typography>
-             
-           
-           
-              
-            </Stack>
-            <Stack direction="row" spacing={2}>
-          <Typography
-                
-                color="textSecondary"
-                component="p"
-                gutterBottom
-                variant="h5"
-              >
-              Email
-              </Typography>
-            <Typography
-                
-                color="textSecondary"
-                component="p"
-                gutterBottom
-                variant="h6"
-              >
-               {user[0].email}
-              </Typography>
-             
-           
-           
-              
-            </Stack>
-            
-              
-             
-              
+              <Typography
 
-             
+                color="textSecondary"
+                component="p"
+                gutterBottom
+                variant="h5"
+              >
+                Username
+              </Typography>
+              <Typography
+
+                color="textSecondary"
+                component="p"
+                gutterBottom
+                variant="h6"
+              >
+                {user[0].username}
+              </Typography>
+            </Stack>
+            <Stack direction="row" spacing={2}>
+              <Typography
+
+                color="textSecondary"
+                component="p"
+                gutterBottom
+                variant="h5"
+              >
+                Email
+              </Typography>
+              <Typography
+
+                color="textSecondary"
+                component="p"
+                gutterBottom
+                variant="h6"
+              >
+                {user[0].email}
+              </Typography>
+            </Stack>
           </CardContent>
-          <Edit user={user[0]}/>
+          <Edit user={user[0]} />
         </Card>
       </Grid>
     </div>

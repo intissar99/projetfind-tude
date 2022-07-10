@@ -24,7 +24,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 550,
-  
+
   boxShadow: 24,
   p: 4,
 };
@@ -92,14 +92,17 @@ function Profil(props) {
       username,
       email,
       password,
-      imageUrl: fileImage.image1
+      picture: fileImage.image1
     };
     try {
+
+      console.log(updatedUser);
       const res = await axios.put(
         `http://localhost:3000/updateUser/${user[0]._id}`,
         updatedUser
       );
-      console.log(res);
+      console.log("inside try", updatedUser);
+
       const resultat = [res.data];
       dispatch({ type: "UpdateSuccess", payload: resultat });
       //if (res) navigate("/profile")
@@ -113,93 +116,93 @@ function Profil(props) {
   return (
     <div>
       <Button variant="contained"
-                  color="primary"
-                  type="submit"
-                  id="submit-button" onClick={handleOpen}>Update user</Button>
+        color="primary"
+        type="submit"
+        id="submit-button" onClick={handleOpen}>Update user</Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-      <section style={{marginTop:"2em"}}>
-      <Container maxWidth="md">
-        <Card sx={style}>
-          <CardContent>
-            <Container maxWidth="sm">
-              <Typography variant="h2" color="text.primary" gutterBottom>
-                Update Profile
-              </Typography>
-          <form>
-            <FormGroup row={true} sx={{ marginTop: "1em" }}>
-              <FormControl fullWidth>
-                <InputLabel >
-                  {props.user.username}
-                </InputLabel>
-                <Input
-  
-                  onChange={handleChangeUsername}
-                />
-                <FormHelperText >
-                  Enter new username
-                </FormHelperText>
-              </FormControl>
-            </FormGroup>
-            <FormGroup row={true} sx={{ marginTop: "1em" }}>
-              <FormControl fullWidth>
-                <InputLabel >
-                Email 
-                </InputLabel>
-                <Input  onChange={handleChangeEmail} />
-                <FormHelperText >
-                  Enter new email
-                </FormHelperText>
-              </FormControl>
-            </FormGroup>
-            <FormGroup row={true} sx={{ marginTop: "1em" }}>
-              <FormControl fullWidth>
-                <InputLabel >
-                  Password
-                </InputLabel>
-                <Input onChange={ handleChangePassword}/>
-                <FormHelperText >
-                  Enter new password
-                </FormHelperText>
-              </FormControl>
-            </FormGroup>
-            <FormGroup  sx={{ marginTop: "1em" }}>
-              <FormControl fullWidth>
-            <Input type="file"
-            id="fileinput"
-            className="photoInput"
-            placeholder="the picture.."
-            name="image"
-            accept="image/*"
-            onChange={previewImage}/>
-            <img id="output_image" style={{ width: "75px", height: "75px" }} className="create-preview-image" />
-              </FormControl>
-            </FormGroup>
+        <section style={{ marginTop: "2em" }}>
+          <Container maxWidth="md">
+            <Card sx={style}>
+              <CardContent>
+                <Container maxWidth="sm">
+                  <Typography variant="h2" color="text.primary" gutterBottom>
+                    Update Profile
+                  </Typography>
+                  <form>
+                    <FormGroup row={true} sx={{ marginTop: "1em" }}>
+                      <FormControl fullWidth>
+                        <InputLabel >
+                          {props.user.username}
+                        </InputLabel>
+                        <Input
 
-            <FormGroup row={true} sx={{ marginTop: "1em" }}>
-              <FormControl fullWidth>
-                <Button
-                  onClick={UpdateUser}
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  id="submit-button"
-                >
-                  Save Changes
-                </Button>
-              </FormControl>
-            </FormGroup>
-          </form>
+                          onChange={handleChangeUsername}
+                        />
+                        <FormHelperText >
+                          Enter new username
+                        </FormHelperText>
+                      </FormControl>
+                    </FormGroup>
+                    <FormGroup row={true} sx={{ marginTop: "1em" }}>
+                      <FormControl fullWidth>
+                        <InputLabel >
+                          Email
+                        </InputLabel>
+                        <Input onChange={handleChangeEmail} />
+                        <FormHelperText >
+                          Enter new email
+                        </FormHelperText>
+                      </FormControl>
+                    </FormGroup>
+                    <FormGroup row={true} sx={{ marginTop: "1em" }}>
+                      <FormControl fullWidth>
+                        <InputLabel >
+                          Password
+                        </InputLabel>
+                        <Input type="password" onChange={handleChangePassword} />
+                        <FormHelperText >
+                          Enter new password
+                        </FormHelperText>
+                      </FormControl>
+                    </FormGroup>
+                    <FormGroup sx={{ marginTop: "1em" }}>
+                      <FormControl fullWidth>
+                        <Input type="file"
+                          id="fileinput"
+                          className="photoInput"
+                          placeholder="the picture.."
+                          name="image"
+                          accept="image/*"
+                          onChange={previewImage} />
+                        <img id="output_image" style={{ width: "75px", height: "75px" }} className="create-preview-image" />
+                      </FormControl>
+                    </FormGroup>
+
+                    <FormGroup row={true} sx={{ marginTop: "1em" }}>
+                      <FormControl fullWidth>
+                        <Button
+                          onClick={UpdateUser}
+                          variant="contained"
+                          color="primary"
+                          type="submit"
+                          id="submit-button"
+                        >
+                          Save Changes
+                        </Button>
+                      </FormControl>
+                    </FormGroup>
+                  </form>
+                </Container>
+              </CardContent>
+            </Card>
           </Container>
-          </CardContent>
-        </Card>
-      </Container>
 
-    </section>
+        </section>
       </Modal>
     </div>
   );

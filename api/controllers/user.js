@@ -14,7 +14,7 @@ exports.createUser = async function (req, res) {
             username: req.body.username,
             email: req.body.email,
             password: hashedPass,
-           
+
         })
         var transporter = nodemailer.createTransport({
             service: "gmail",
@@ -29,7 +29,7 @@ exports.createUser = async function (req, res) {
             subject: "Sending You login infos",
             text: `Hello ${req.body.fullname} welcome to our site.\nPlease here you go your account's password ${req.body.password}`,
         };
-        
+
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
@@ -137,28 +137,26 @@ exports.deleteUsers = async function (req, res) {
 }
 //update user
 exports.updateUser = async function (req, res) {
+    console.log(req.body);
+    console.log(req.params.id);
 
     if (req.body.userId === req.params.id) {
         if (req.body.password) {
             const salt = await bcrypt.genSalt(10)
-            req.body.password = await bcrypt.hash(req.body.password)
+            req.body.password = await bcrypt.hash(req.body.password, salt)
         } try {
 
             const updateduser = await db.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
 
-
-
-
-            res.send(200, updateduser)
+            res.status(200).send(updateduser)
         }
         catch (error) {
             console.log(error)
             res.status(500).send(error)
-
         }
 
     } else {
-        res.status(401).send("you can update only your account ")
+        res.status(401).send("you can update only your account")
     }
 
 

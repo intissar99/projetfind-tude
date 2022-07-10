@@ -27,9 +27,9 @@ function Navbar() {
   const [nav, setnav] = useState(false);
   const handleLogOut = () => {
     dispatch({ type: "LogOutAdmin" });
-    localStorage.removeItem("admin");
+    window.localStorage.clear();
     navigate("/LoginAd");
-    document.location.reload()
+    // document.location.reload()
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -102,8 +102,8 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  <Link to={"/profile"}>profile</Link>
+                <Typography onClick={() => { navigate("/profile") }} textAlign="center">
+                  Profile
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>

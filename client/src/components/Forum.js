@@ -13,6 +13,8 @@ import {
 import axios from "axios";
 import { Replies } from "./Replies";
 import { Answer } from "./Answer";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 
 export const Forum = () => {
   const [comment, setComment] = useState("");
