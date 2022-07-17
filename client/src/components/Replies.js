@@ -17,9 +17,7 @@ export const Replies = ({ commentid }) => {
     const [replies, setreplies] = useState([]);
     const [show, setShow] = useState(false)
     const [y, sety] = useState(true)
-
     const { user } = useContext(Context)
-
     const createReply = async (event) => {
         event.preventDefault();
         try {
@@ -64,22 +62,20 @@ export const Replies = ({ commentid }) => {
         <div>
             {show ?
                 <Grid>
-                    <Card style={{ maxWidth: 10000, padding: "20px 5px", margin: " 90px auto" }}>
+                    <Card style={{ maxWidth: 10000, padding: "20px 5px", margin: " 90px auto", bgcolor: "info" }}>
                         <CardContent>
                             <form>
                                 <Stack spacing={2}>
                                     {replies.map((reply, i) => {
                                         return (
-
                                             <Grid item xs={12} >
                                                 <Typography
                                                     style={{ bgcolor: "info" }} gutterBottom variant="h5"
                                                 >
                                                     {reply.user}
                                                 </Typography>
-
-                                                {
-                                                    y ? <Grid>
+                                                {y ?
+                                                    <Grid>
                                                         <Typography
                                                             variant="body2"
                                                             color="textSecondary"
@@ -101,7 +97,8 @@ export const Replies = ({ commentid }) => {
                                                             }
 
                                                         </Typography>
-                                                    </Grid> : <Grid>
+                                                    </Grid> :
+                                                    <Grid>
                                                         <TextField
                                                             name="reply"
                                                             placeholder="Enter reply"
@@ -112,7 +109,7 @@ export const Replies = ({ commentid }) => {
                                                             required
                                                         />
                                                         <Button >
-                                                            subbmit YOUR reply
+                                                            Submit YOUR reply
                                                         </Button>
                                                     </Grid>
                                                 }
@@ -139,7 +136,7 @@ export const Replies = ({ commentid }) => {
                         </CardContent>
                     </Card>
                 </Grid>
-                : <Button variant="outlined" onClick={() => setShow(true)} color="primary" sx={{ height: 40 }}>
+                : <Button data-bs-toggle="collapse" variant="outlined" onClick={() => setShow(true)} color="primary" sx={{ height: 40 }}>
                     REPLY
                 </Button>}
         </div>

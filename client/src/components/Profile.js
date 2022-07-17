@@ -1,8 +1,6 @@
 import { React, useContext } from "react";
 import {
   Grid,
-  TextField,
-  Button,
   Card,
   CardContent,
   Typography,
@@ -50,7 +48,6 @@ function Profile() {
             </Stack>
             <Stack direction="row" spacing={2}>
               <Typography
-
                 color="textSecondary"
                 component="p"
                 gutterBottom
@@ -59,7 +56,6 @@ function Profile() {
                 Username
               </Typography>
               <Typography
-
                 color="textSecondary"
                 component="p"
                 gutterBottom
